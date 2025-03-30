@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_marinheiros">Quantos marinheiros Luffy vai enfrentar? </label>
+    <input type="number" id="ipt_marinheiros" placeholder="ex: 20">
+
+    <label for="ipt_carnes">Quantas carnes ele terá disponivel? </label>
+    <input type="text" id="ipt_carnes">
+
+    <label for="ipt_batalha">Quantas batalhas serão feitas? </label>
+    <input type="number" id="ipt_batalha">
+
+    <button onclick="batalha()">Batalha</button>
+
+    <h3 id="mostragem"></h3>
+    <h2 id="resultado"></h2>
+
+</body>
+<script>
+    function batalha() {
+        var marinheiros = Number(ipt_marinheiros.value)
+        var carnes = Number(ipt_carnes.value)
+        var batalha = Number(ipt_batalha.value)
+        var frase = ""
+        var luffy = 100
+        mostragem.innerHTML = ''
+        resultado.innerHTML = ''
+
+        if (marinheiros <= 0  || carnes < 0  || batalha <= 0) {
+            alert('Favor informar a quantidade')
+            return;
+        }
+
+        mostragem.innerHTML += `Quantidade de marinheiros: ${marinheiros} <br> Quantidade de carne: ${carnes}`;
+
+        for(var contador = 1; contador <= batalha; contador++){
+            
+            console.log ('Inicio da batlha, marinheiros:', marinheiros, 'Carnes: ', carnes)
+            var marinheirosAtual = 0
+            var carnesAtual = carnes
+            var luffyAtual = luffy
+            
+            for(var contadorM = 1; contadorM <= marinheiros; contadorM++){
+                marinheirosAtual += 1
+                marinheirosAtual = luffyAtual -5
+            }
+
+            console.log('marinheirosatual:', marinheirosAtual,
+                'luffyatual:', luffyAtual
+            )
+            
+            
+            
+            if (batalha > 1){
+                luffyAtual -= 10
+            }
+        
+            if (luffyAtual == 0){
+                if (carnesAtual > 0 ){
+                    carnesAtual -= 1
+                    luffyAtual += 100
+                }else{
+                    resultado.innerHTML += ` ${contador}ª batalha: <br>
+                    Resultado: Luffy foi derrotado, comeu ${carnesAtual} carne(s), derrotou${marinheirosAtual} marinheiro(s) e sobrou ${luffyAtual} pontos de energia<br>`
+                    console.log ('loser')
+                
+            }
+            
+            if (marinheirosAtual == 0){ 
+                resultado.innerHTML += `${contador}ª batalha: <br>
+                resultado: Luffy saiu vitorioso, comeu ${carnesAtual} carne(s), derrotou ${marinheirosAtual} marinheiro(s) e sobrou ${luffyAtual} pontos de energia<br>`
+                console.log ('vitorioso')
+                
+            }
+            
+        }
+    }
+    }
+</script>
+</html>

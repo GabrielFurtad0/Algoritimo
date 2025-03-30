@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_frase">
+    <button onclick="analisar()">Analisar frase</button>
+
+    <div id="div_resultado"></div>
+</body>
+<script>
+    function analisar(){
+        var fraseDigitada = ipt_frase.value
+        var fraseFinal = ''
+
+        var tamanhoFrase = fraseDigitada.length;
+        fraseFinal += `Tamanho da frase: ${tamanhoFrase}<br>`
+
+        /*var terminaComPontoCom = fraseDigitada.endswith(".com")    
+        fraseFinal += `Termina com .com? ${terminaComPontoCom}<br>` 
+
+        var terminaComBr = fraseDigitada.endswith(".br")
+        fraseFinal += `Termina com .br? ${terminaComBr}<br>`
+        
+        var comecaComEu = fraseDigitada.startswith("Eu")
+        fraseFinal += `A frase começa com Eu? ${comecaComEu} <br>`
+        */
+        
+        var primeiraLetra = fraseDigitada[0]
+        fraseFinal += `Primeira letra [0]: ${primeiraLetra}<br>`
+
+        var letraPosicao3 = fraseDigitada[3];
+        fraseFinal += `letra na posição [3]: ${letraPosicao3}`
+
+        var ultimaLetra = fraseDigitada[ultimaLetra - 1]
+        fraseFinal += `Ultima letra: ${ultimaLetra}`
+
+        var indiceDoBob = fraseDigitada.indexOf("Bob")
+        fraseFinal += `x:  ${indiceDoBob}<br>`
+
+        // util para validar se o email possui @
+        var possuiBob = fraseDigitada.includes("bob")
+        fraseFinal += `bob foi encontrado na frase? ${possuiBob} <br>`
+
+        var frasMaiuscula = fraseDigitada.toUpperCase();
+        fraseFinal += `Frase maiuscula: ${frasMaiuscula} <br>`
+
+        var fraseMinuscula = fraseDigitada.toLowerCase()
+        fraseFinal += `Frase minuscula ${fraseMinuscula} <br>`
+
+        // exibindo a frase final no HTML:
+        div_resultado.innerHTML = fraseFinal
+    }
+</script>
+</html>
