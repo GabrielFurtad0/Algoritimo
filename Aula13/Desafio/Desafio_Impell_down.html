@@ -54,7 +54,7 @@
         if (contador > 1) {
           luffy -= 10
           console.log('Luffy iniciou mais uma batalha, -10 de de energia, energia atual: ', luffy);
-          
+          div_batalha.innerHTML += `Começou a ${contador}ª batalha e perdeu 10 de energia`
         }
         
         if (luffy < 0) {
@@ -100,14 +100,14 @@
         // VITORIA
         if (contadorMarinheiros >= marinheiros) {
           div_batalha.innerHTML += ` 
-          ${contador}ª Batalha: <br>
+          <br>
           Resultado: Luffy saiu vitorioso, comeu ${qtdCarneComida} carne(s), derrotou ${contadorMarinheiros - 1} marinheiro(s) e sobrou ${luffy} pontos de energia<br>
           ------------------------------------------------------------<br>`
         }
         // DERROTA
         if (contadorMarinheiros < marinheiros) {
           div_batalha.innerHTML += `
-          ${contador}ª Batalha:<br>
+          <br>
           Resultado: Luffy foi derrotado, comeu ${qtdCarneComida} carne(s), derrotou ${contadorMarinheiros - 1} marinheiro(s) e sobrou ${luffy} pontos de energia<br>
           ------------------------------------------------------------<br>`
         }
