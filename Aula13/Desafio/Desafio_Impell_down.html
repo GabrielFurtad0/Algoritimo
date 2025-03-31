@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio Luffy</title>
+</head>
+
+<body>
+  <label for="ipt_marinheiros">Quantos marinheiros Luffy vai enfrentar? </label>
+  <input type="number" id="ipt_marinheiros" placeholder="ex: 20">
+
+  <label for="ipt_carnes">Quantas carnes ele terá disponivel? </label>
+  <input type="text" id="ipt_carnes">
+
+  <label for="ipt_batalha">Quantas batalhas serão feitas? </label>
+  <input type="number" id="ipt_batalha">
+
+  <button onclick="batalha()">Batalha</button>
+
+  <div id="div_batalha"></div>
+
+</body>
+<script>
+  function batalha() {
+    var marinheiros = Number(ipt_marinheiros.value)
+    var carnes = Number(ipt_carnes.value)
+    var batalha = Number(ipt_batalha.value)
+    var frase = ""
+    var luffy = 100
+    div_batalha.innerHTML = ''
+    var qtdCarneComida = 0
+
+    div_batalha.innerHTML += `------------------------------------------------------------<br>
+      Quantidade de batalha(s): ${batalha} <br>
+      Quantidade de marinheiro(s): ${marinheiros} <br>
+      Quantidade de carne(s): ${carnes}<br>
+      ------------------------------------------------------------<br>`
+
+    for (var contador = 1; contador <= batalha; contador++) {
+     qtdCarneComida = 0
+     if (luffy < 0) {
+          if (carnes >= 1) {
+            carnes--
+            qtdCarneComida++
+            luffy += 100
+            console.log('Luffy comeu a carne. Energia do Luffy:', luffy, ' Carnes restantes:', carnes, ' Carnes comidas:', qtdCarneComida);
+          }  
+        }
+      if (luffy > 0){
+
+        
+        if (contador > 1) {
+          luffy -= 10
+          console.log('Luffy iniciou mais uma batalha, -10 de de energia, energia atual: ', luffy);
+          
+        }
+        
+        if (luffy < 0) {
+          if (carnes >= 1) {
+            carnes--
+            qtdCarneComida++
+            luffy += 100
+            console.log('Luffy comeu a carne. Energia do Luffy:', luffy, ' Carnes restantes:', carnes, ' Carnes comidas:', qtdCarneComida);
+          }  
+        }
+        
+        console.log('antes de definir contadorMarinheiros: ', contadorMarinheiros);
+        
+        var contadorMarinheiros = 1
+        
+        console.log('depois de definir contadorMarinheiros: ', contadorMarinheiros);
+        
+        for (; luffy >= 5 && contadorMarinheiros <= marinheiros ; contadorMarinheiros++) {
+          luffy -= 5
+          console.log(' Luffy derrotou mais um, total derrotado:', contadorMarinheiros,
+          ' energia restante:', luffy);
+          
+          if (luffy <= 0) {
+            if (carnes >= 1) {
+              carnes--
+              qtdCarneComida++
+              luffy += 100
+              console.log('Luffy comeu a carne. Energia do Luffy:', luffy, ' Carnes restantes:', carnes, ' Carnes comidas:', qtdCarneComida);
+            }  
+          }
+        } 
+        
+        if (luffy < 0) {
+          if (carnes >= 1) {
+            carnes--
+            qtdCarneComida++
+            luffy += 100
+            console.log('Luffy comeu a carne. Energia do Luffy:', luffy, ' Carnes restantes:', carnes, ' Carnes comidas:', qtdCarneComida);
+          }  
+        }
+        
+        
+        // VITORIA
+        if (contadorMarinheiros >= marinheiros) {
+          div_batalha.innerHTML += ` 
+          ${contador}ª Batalha: <br>
+          Resultado: Luffy saiu vitorioso, comeu ${qtdCarneComida} carne(s), derrotou ${contadorMarinheiros - 1} marinheiro(s) e sobrou ${luffy} pontos de energia<br>
+          ------------------------------------------------------------<br>`
+        }
+        // DERROTA
+        if (contadorMarinheiros < marinheiros) {
+          div_batalha.innerHTML += `
+          ${contador}ª Batalha:<br>
+          Resultado: Luffy foi derrotado, comeu ${qtdCarneComida} carne(s), derrotou ${contadorMarinheiros - 1} marinheiro(s) e sobrou ${luffy} pontos de energia<br>
+          ------------------------------------------------------------<br>`
+        }
+        
+      }else (div_batalha.innerHTML += `Luffy não teve energia suficiente para iniciar a ${contador}ª batalha <br>
+      ------------------------------------------------------------<br>`)
+      
+    }
+  }
+</script>
+
+</html>
