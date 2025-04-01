@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist Interativa</title>
+</head>
+<body>
+  <label for="ipt_quantidade">Quantas músicas voce irá ouvir?</label>
+  <input type="text" id="ipt_quantidade" placeholder="Ex: 6">
+
+  <button onclick="show()">Começar o show</button>
+  <div id="div_show"></div>
+</body>
+<script>
+  function show(){
+    var qtdMusicas = Number(ipt_quantidade.value)
+
+    var musicaAnterior = ''
+    for(var contador = 1; contador <= qtdMusicas; contador++){
+      var nomeMusica = prompt('Qual musica você deseja ouvir? ')
+      while (nomeMusica == musicaAnterior){
+        nomeMusica = prompt('Essa música acabou de tocar, escolha outra:')
+      }
+      alert(`Tocando a ${contador}ª musica: ${nomeMusica}`)
+      prompt(`Voce gosta de ${nomeMusica}? `)
+      musicaAnterior = nomeMusica
+    }
+
+  }
+
+</script>
+</html>
