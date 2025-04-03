@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Minimo: <input type="text" id="ipt_min">
+    Máximo: <input type="text" id="ipt_max">
+
+    <button onclick="calculo()">Calcular</button>
+    <div id="div_exibir"></div>
+    
+</body>
+<script>
+    function calculo(){
+
+        var numeroAleatorio = Math.random()
+        console.log('Aleatório: ', numeroAleatorio);
+        
+        var numeroAleatorioAte10 = Math.random() * 10;
+        console.log('Aleatório ate 10: ', numeroAleatorioAte10);
+        
+        var aleatorio1 = Number (Math.random() * 10)
+        var aleatorio2 = Number (Math.random() * 100)
+        
+        div_exibir.innerHTML += `${aleatorio2 - aleatorio1}`
+        
+        //Desafio
+        //Como gerar um aleatorio com min. e max?
+        
+        //regra: pesquisar na comunidade e não na IA
+        
+        var min = Number(ipt_min.value)
+        var max = Number(ipt_max.value)
+        
+        var num1 =(min + (max - min) * Math.random())
+        
+        
+        div_exibir.innerHTML = `${num1}`
+        
+    }
+    </script>
+    </html>

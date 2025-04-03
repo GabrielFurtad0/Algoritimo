@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        font-family: verdana;
+        font-size: 50px;
+        color: white;
+        border-radius: 15px;
+        background-color: #555;
+        height: 200px;
+        width: 200px;
+        place-content: center;
+        place-items: center;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <button onclick="dado()">Sortear</button>
+    <div id="div_dado"></div>
+</body>
+<script>
+    function dado() {
+        var min = Number(1)
+        var max = Number(20)
+
+        var num1 = (min + (max - min) * Math.random()).toFixed(0)
+
+
+        div_dado.innerHTML = `${num1}`
+
+    }
+</script>
+
+</html>

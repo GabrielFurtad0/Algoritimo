@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_qtdMusica">Digite a quantidade de músicas: </label>
+    <input type="text" id="ipt_qtdMusica">
+
+    <button onclick="show()">Começar o show!</button>
+    <div id="div_show"></div>
+</body>
+<script>
+    function show() {
+        var qtdMusicas = Number(ipt_qtdMusica.value)
+        var qtdAprovado = 0
+        var qtdDesaprovado = 0
+        var resposta = ''
+        var musicaAnterior = ''
+
+        for (var contador = 1; contador <= qtdMusicas; contador++) {
+            var musicatocando = prompt(`Digite a ${contador}ª musica: `)
+            
+            while (musicatocando == musicaAnterior) {
+                prompt('Digite uma música diferente da anterior: ')
+            }
+
+            var aprovacao = prompt('Você gosta dessa música? (sim ou não)')
+            while(aprovacao != "sim" && aprovacao != "não"){
+                aprovacao = prompt('Digite sim ou não')
+            }
+
+            /*do{ //do while força o código a cair no while loop mesmo que a condição do while não seja verdadeiro
+                var aprovacao = prompt(`Você gostou da musica: ${musicatocando}?`)
+            }while(aprovacao != 'sim' && aprovacao != 'não')*/
+
+            /*while (true) { //while (true) faz com que sempre caia no while loop
+                
+                var aprovacao = prompt(`Você gostou da musica: ${musicatocando}?`)
+
+                if (aprovacao == 'sim') {
+                    qtdAprovado++
+                    break;
+                } else if (aprovacao == 'não') {
+                    qtdDesaprovado++
+                    break;
+                }else alert('Digite: sim ou não')*/
+                musicaAnterior = musicatocando
+            }
+        }
+
+        div_show.innerHTML = `Quantidade de musicas tocadas: ${qtdMusicas} <br>
+                              Quantidade de musicas aprovadas: ${qtdAprovado} <br>
+                              Quantidade de musicas desaprovadas: ${qtdDesaprovado}`
+</script>
+
+</html>
