@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="nota()">Gerar uma nota de aluno entre 0 e 10</button>
+  <div id="div_nota"></div>
+  <button onclick="freq()">Gerar uma frequência de aluno entre 0 e 100</button>
+  <div id="div_freq"></div>
+  <button onclick="situ()">Ver situação</button>
+  <div id="div_situ"></div>
+</body>
+<script>
+  function nota(){
+    Notaa = (3 + (10 - 3) * Math.random()).toFixed(2)
+    div_nota.innerHTML = `${Notaa} <br>`
+  }
+  function freq(){
+    frequencia = (50 + (100 - 50) * Math.random()).toFixed(2)
+    div_freq.innerHTML = `${frequencia} <br>`
+  }
+  function situ(){
+    situacao = ''
+
+    if ((Notaa >= 6 && Notaa < 9) && (frequencia >= 75 && frequencia < 90)){
+      div_situ.innerHTML = `Com nota ${Notaa} e frequência ${frequencia}, o aluno está aprovado!`
+    }else if (Notaa >= 9 && frequencia >=90){
+      div_situ.innerHTML = `Com nota ${Notaa} e frequência ${frequencia}, o aluno está mais que aprovado!`
+    }else div_situ.innerHTML = `Com nota ${Notaa} e frequência ${frequencia}, o aluno está reprovado!`
+  }
+</script>
+</html>

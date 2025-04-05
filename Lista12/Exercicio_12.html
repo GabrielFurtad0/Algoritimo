@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="avaliar()">Avaliar</button>
+  <div id="div_avaliar"></div>
+  <div id="div_nota"></div>
+</body>
+<script>
+   
+   var soma = Number(0)
+   var qtdnotas = Number(0)
+  function avaliar(){
+    var nota =  Number((0 + (5 - 0) * Math.random()).toFixed(1))
+    var media = soma / qtdnotas
+
+    console.log('nota: ', nota);
+    
+
+    soma += nota;
+    qtdnotas ++;
+
+    console.log('qtdnotas: ', qtdnotas);
+    console.log('Soma: ', soma);
+    
+    div_nota.innerHTML = ''
+    div_avaliar.innerHTML = ''
+
+    div_nota.innerHTML = `Nota: ${nota}<br>`
+    
+
+    if (media <= 1 ){
+      div_avaliar.innerHTML = `Média: ${media.toFixed(1)}🥺`
+    }else if (media <= 2 ){
+      div_avaliar.innerHTML = `Média: ${media.toFixed(1)}☹️`
+  }else if (media <= 3 ){
+      div_avaliar.innerHTML = `Média: ${media.toFixed(1)}🙂`
+  }else if (media <= 4 ){
+      div_avaliar.innerHTML = `Média: ${media.toFixed(1)}😊`
+  }else {
+      div_avaliar.innerHTML = `Média: ${media.toFixed(1)}😎`
+  }
+ 
+}
+</script>
+</html>

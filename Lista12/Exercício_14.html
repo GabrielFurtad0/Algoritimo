@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="lua()">Ver a lua</button>
+  <div id="div_lua"></div>
+</body>
+<script>
+  function lua(){
+    var numero = (1 + (31 - 1) * Math.random()).toFixed(0)
+
+    
+
+    if (numero <= 7){
+      div_lua.innerHTML = 'Lua nova'
+    }else if (numero <= 16){
+      div_lua.innerHTML = 'Lua cheia'
+    }else if (numero <= 22){
+      div_lua.innerHTML = 'Lua minguante'
+    }else div_lua.innerHTML = 'Lua crescente'
+    
+    div_lua.innerHTML += `<br> Dia do mês: ${numero}`
+
+  }
+</script>
+</html>

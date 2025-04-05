@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        height: 200px;
+        width: 200px;
+    }
+</style>
+<body>
+    <button onclick="Jogar()">Jogar</button>
+    <div id="div_jogar"></div>
+</body>
+<script>
+    var pontosJ1 = 0
+    var pontosJ2 = 0
+    function Jogar(){
+        var numero = (1 +(3 - 1) * Math.random()).toFixed(0)
+        var numero2 = (1 +(3 - 1) * Math.random()).toFixed(0)        
+        var exibicao = ""
+        var exibicaoJ2 = ""
+        
+        div_jogar.innerHTML = ``
+
+        
+
+        // 1 = pedra 2 = papel 3 = tesoura
+        // 1 ganha de 3, 2 ganha de 1, 3 ganha de 2
+        if (numero == 1){
+          exibicao += `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXB12FSrCbbpm1ia0LiBhtRCWM65f_qM4Yug&s" alt=""> <br> ` 
+          numero = 'pedra'
+        }else if (numero == 2 ){
+            exibicao =`<img src="https://media.istockphoto.com/id/178565230/pt/foto/isolado-macho-m%C3%A3o-mostrando-o-n%C3%BAmero-cinco.jpg?s=612x612&w=0&k=20&c=Vv_oncKPmcMrLog0jw8H6XP-8wHZx8ZeLZlqXWe94SM=" alt=""> <br>`
+            numero = 'papel'
+        }else if (numero == 3){ exibicao = `<img src="https://static.vecteezy.com/ti/fotos-gratis/p2/12604090-gesto-de-tesoura-na-mao-esquerda-para-o-conceito-de-jogo-de-tesoura-de-papel-de-pedra-isolado-no-fundo-branco-gratis-foto.jpeg" alt=""> <br>`
+        numero = 'tesoura'}
+
+        if (numero2 == 1){
+            exibicaoJ2 = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXB12FSrCbbpm1ia0LiBhtRCWM65f_qM4Yug&s" alt=""> <br>`  
+          numero2 = 'pedra'
+        }else if (numero2 == 2){
+            exibicaoJ2 =`<img src="https://media.istockphoto.com/id/178565230/pt/foto/isolado-macho-m%C3%A3o-mostrando-o-n%C3%BAmero-cinco.jpg?s=612x612&w=0&k=20&c=Vv_oncKPmcMrLog0jw8H6XP-8wHZx8ZeLZlqXWe94SM=" alt=""> <br>`
+            numero2 = 'papel'
+        }else if (numero2 == 3){ exibicaoJ2 = `<img src="https://static.vecteezy.com/ti/fotos-gratis/p2/12604090-gesto-de-tesoura-na-mao-esquerda-para-o-conceito-de-jogo-de-tesoura-de-papel-de-pedra-isolado-no-fundo-branco-gratis-foto.jpeg" alt=""> <br>`
+        numero2 = 'tesoura'}
+
+
+        console.log('Jogador 1:', numero, 
+        ' Jogador 2:', numero2);
+        
+        if (numero == 'pedra' && numero2 == 'tesoura'){
+           div_jogar.innerHTML += `<br> Jogador 1 ganhou <br>` 
+            pontosJ1 ++
+        }else if(numero == 'papel' && numero2 == 'pedra'){
+            div_jogar.innerHTML += `<br> Jogador 1 ganhou <br>` 
+            pontosJ1 ++
+        }else if(numero == 'tesoura' && numero2 == 'papel'){
+            div_jogar.innerHTML += `<br> Jogador 1 ganhou <br>` 
+            pontosJ1 ++
+        }
+        
+        if (numero2 == 'pedra' && numero == 'tesoura'){
+           div_jogar.innerHTML += `<br> Jogador 2 ganhou <br>` 
+            pontosJ2 ++
+        }else if(numero2 == 'papel' && numero == 'pedra'){
+            div_jogar.innerHTML += `<br> Jogador 2 ganhou <br>` 
+            pontosJ2 ++
+        }else if(numero2 == 'tesoura' && numero == 'papel'){
+            div_jogar.innerHTML += `<br> Jogador 2 ganhou <br>` 
+            pontosJ2 ++
+        }
+
+        
+            
+
+        div_jogar.innerHTML += `${exibicao} ${exibicaoJ2}<br>
+        <p>Jogador 1: ${pontosJ1}vitória(s). <br>
+           Jogador 2: ${pontosJ2}vitória(s) </p>`
+           
+           if(numero == numero2){
+            div_jogar.innerHTML += 'Empate'
+        }
+    }
+</script>
+</html>

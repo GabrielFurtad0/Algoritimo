@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="nota()">Sortear nota</button>
+    <div id="div_nota"></div>
+</body>
+<script>
+    function nota(){
+        var numero = (0 +(10 - 0) * Math.random())
+        div_nota.innerHTML = `Sua nota é: ${numero.toFixed(1)}`
+    }
+</script>
+</html>

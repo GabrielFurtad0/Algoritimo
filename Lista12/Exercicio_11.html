@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="avaliar()">Avaliar</button>
+  <div id="div_avaliar"></div>
+  <div id="div_nota"></div>
+</body>
+<script>
+  function avaliar(){
+    nota =  (0 + (5 - 0) * Math.random()).toFixed(1)
+
+    div_nota.innerHTML = `Nota: ${nota}`
+
+    if (nota <= 0.5){
+      div_avaliar.innerHTML = 'Muito triste'
+    }else if (nota <= 1.5){
+      div_avaliar.innerHTML = 'Meio triste'
+    }else if (nota <= 3.5){
+      div_avaliar.innerHTML = 'neutro'
+    }else if (nota <= 4.5){
+      div_avaliar.innerHTML = 'Feliz'
+    }else div_avaliar.innerHTML = 'Muito feliz'
+
+
+  }
+</script>
+</html>

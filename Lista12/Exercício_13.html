@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="temp()">Sortear temperatura</button>
+  <div id="div_temp"></div>
+</body>
+<script>
+  function temp(){
+    temperatura = (-20 + (20 - (-20)) * Math.random()).toFixed(0)
+    
+    div_temp.innerHTML = ''
+
+    if (temperatura <= 1){
+      div_temp.innerHTML += 'Dá pra conservar qualquer alimento'
+    }else if (temperatura <= 10){
+      div_temp.innerHTML += 'Conserva a maioria dos alimentos'
+    }else{
+      div_temp.innerHTML += 'Estraga a maioria dos alimentos'
+    }
+
+    div_temp.innerHTML += `<br> Temperatura: ${temperatura} C°`
+  }
+</script>
+</html>

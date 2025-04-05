@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        font-family: verdana;
+        font-size: 50px;
+        color: white;
+        border-radius: 15px;
+        background-color: #555;
+        height: 200px;
+        width: 200px;
+        place-content: center;
+        place-items: center;
+        text-align: center;
+    }
+    button{
+      border-radius: 5px;
+      
+    }
+</style>
+
+<body>
+    <button onclick="dado1()">Dado jogador 1</button>
+    <div id="div_dado1"></div>
+    <button onclick="dado2()">Dado jogador 2</button>
+    <div id="div_dado2"></div>
+    <button onclick="comparacao()">Comparar resultados</button>
+    <div id="div_comparacao"></div>
+</body>
+<script>
+    function dado1() {
+        var min = Number(1)
+        var max = Number(6)
+
+        var dado1 = (min + (max - min) * Math.random()).toFixed(0)
+
+
+        div_dado1.innerHTML = `${dado1}`
+
+    }
+
+    function dado2() {
+        var min = Number(1)
+        var max = Number(6)
+
+        var dado2 = (min + (max - min) * Math.random()).toFixed(0)
+
+
+        div_dado2.innerHTML = `${dado2}`
+
+    }
+    function comparacao(){
+      console.log(dado1, dado2);
+      
+      comparassao = ''
+      if (dado1 > dado2){
+        comparassao = `Jogador 1 venceu!`
+      }else if (dado1 < dado2){
+        comparassao = `Jogador 2 venceu!`
+      }else comparassao = 'Empate!'
+
+      div_comparacao.innerHTML = comparassao
+    }
+</script>
+
+</html>

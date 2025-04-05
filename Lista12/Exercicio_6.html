@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exércicio 6</title>
+</head>
+<body>
+  <button onclick="dia()">Sortear momento do dia</button>
+
+  <div id="div_dia"></div>
+</body>
+<script>
+  function dia(){
+    Numero = (23 * Math.random()).toFixed(0)
+
+    if (Numero > 0 && Numero <= 11){
+
+      div_dia.innerHTML = `Bom dia, flor do dia, são ${Numero}h!`
+    }else if (Numero <=17){
+      div_dia.innerHTML = `Boa tarde, já vai tarde! São ${Numero}h!`
+    }else if (Numero <=23){
+      div_dia.innerHTML = `Boa noite, durma bem! São ${Numero}h!`
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+    div {
+        font-family: verdana;
+        font-size: 50px;
+        color: white;
+        border-radius: 15px;
+        background-color: #555;
+        height: 200px;
+        width: 200px;
+        place-content: center;
+        place-items: center;
+        text-align: center;
+    }
+    button{
+      border-radius: 5px;
+      
+    }
+</style>
+
+<body>
+    Jogador 1
+    <div id="div_dado1"></div>
+    Jogador 2
+    <div id="div_dado2"></div>
+    <button onclick="comparacao()">Jogar</button>
+    <span id="span_comparacao"></span>
+</body>
+<script>
+  var pontosJ1 = 0
+  var pontosJ2 = 0
+  var empates = 0
+    function comparacao(){
+      var min = Number(1)
+        var max = Number(6)
+
+        var dado2 = (min + (max - min) * Math.random()).toFixed(0)
+
+
+        div_dado2.innerHTML = `${dado2}`
+
+       var min = Number(1)
+        var max = Number(6)
+
+        var dado1 = (min + (max - min) * Math.random()).toFixed(0)
+
+
+        div_dado1.innerHTML = `${dado1}`
+
+      
+
+      console.log(dado1, dado2, 'PontosJ1: ', pontosJ1, ' PontosJ2:', pontosJ2);
+      
+      comparassao = ''
+      if (dado1 > dado2){
+        pontosJ1 ++
+      }else if (dado1 < dado2){        
+        pontosJ2 ++
+      }else empates ++
+
+      span_comparacao.innerHTML = `placar: <br>
+      Jogador 1: ${pontosJ1} <br>
+      Jogador 2: ${pontosJ2} <br>
+      Empates: ${empates} <br>`
+
+      if (pontosJ1 > pontosJ2){
+        span_comparacao.innerHTML += `O jogador 1 está vencendo!`
+      }else if (pontosJ1 < pontosJ2){
+        span_comparacao.innerHTML += `O jogador 2 está vencendo!`
+      }else span_comparacao.innerHTML += `O placar esta empatado!`
+    }
+</script>
+
+</html>
