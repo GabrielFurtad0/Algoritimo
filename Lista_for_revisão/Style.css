@@ -1,0 +1,24 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: verdana;
+    font-size: 35px;
+    place-content: start;
+    place-items: center;
+}
+
+div{
+    color: beige;
+    border-radius: 10px;
+    background-color: darkgreen;
+    text-align: center;
+}
+button{
+    border-radius: 5px;
+    width: max-content;
+    
+}
+button:hover{
+    width: 200px;
+    height: 50px;
+}

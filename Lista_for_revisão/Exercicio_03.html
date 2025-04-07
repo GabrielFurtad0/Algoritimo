@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_numero">Insira um valor entre 10 e 500</label>
+    <input type="text" id="ipt_numero">
+    <button onclick="pares()">Somar pares</button>
+    <div id="div_pares"></div>
+</body>
+<script>
+    function pares(){
+        var numero = ipt_numero.value
+
+        div_pares.innerHTML = ``
+
+        var soma = 0
+
+        for(var contador = 1; contador <= numero; contador ++){
+            if (contador % 2 == 0){
+                console.log(contador, 'é par');
+                
+                div_pares.innerHTML += `<br> ${contador} <br>`
+                soma += contador
+            }
+            
+        }div_pares.innerHTML += `<br> A soma de todos os pares é ${soma} <br>`
+
+    }
+</script>
+</html>

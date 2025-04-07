@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_numeromax">Informe um número para o fim da contagem</label>
+    <input type="number" id="ipt_numeromax">
+    <label for="ipt_numDivi">Informe um número para testes de divisibilidade</label>
+    <input type="number" id="ipt_numDivi">
+
+    <button onclick="mult()">Somar numeros</button>
+    <div id="div_mult"></div>
+</body>
+<script>
+    function mult(){
+        var numeromax = Number(ipt_numeromax.value)
+        var numDivi = Number(ipt_numDivi.value)
+
+        if (numeromax < numDivi){
+            alert('Numero de fim maior que o numero de inicio')
+        }
+
+         div_mult.innerHTML += `Os multiplos de ${numDivi}`
+
+        var soma = 0
+        for (var contador = 1 ; contador <= numeromax; contador ++){
+            if (numDivi % contador == 0){
+                div_mult.innerHTML += `<br> ${contador} <br>`
+                soma += contador
+            } 
+        }
+        div_mult.innerHTML += `<br> a soma dos multiplos de ${numDivi} é de: ${soma} <br>`
+    }
+</script>
+</html>
