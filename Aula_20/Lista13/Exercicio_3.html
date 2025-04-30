@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="ipt_endereço">
+  <button onclick="endereço()">Cadastrar bairro</button> 
+  <br>
+  <input type="number" id="ipt_selecao">
+  <button onclick="remember()">Relembrar moradia</button>
+  <div id="div_exbir"></div>
+</body>
+<script>
+  let contadorEndereços = 0
+  let endereços = []
+  function endereço(){
+    let novoEndereço = ipt_endereço.value
+    endereços.push(novoEndereço)
+    alert('Novo enderço adicionado!')
+    contadorEndereços ++
+    console.log(endereços);
+    
+  }
+  function remember(){
+    let numero = Number(ipt_selecao.value)
+    let numeroIndex = numero - 1
+    let exbir = ``
+    if (numero >= 1){
+
+      if (contadorEndereços >= numero ){
+        exbir = `o seu ${numero}º endereço foi ${endereços[numeroIndex]}`
+      }else (exbir = `Você ainda não teve um ${numero}º endereço`) 
+      div_exbir.innerHTML = exbir
+      console.log(endereço[0]);
+    }alert ('O número inserido tem que ser maior ou igual a 1')
+    
+  }
+</script>
+</html>

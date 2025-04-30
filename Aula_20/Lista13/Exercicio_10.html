@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_linha" placeholder="Insira aqui seus linhas favoritos!">
+    <br>
+    <button onclick="linha()">Cadastrar linha</button>
+    <br>
+    <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisa()">Pesquisar</button>
+    <div id="div_exibir"></div>
+</body>
+<script>
+    let linhas = []  
+    let exibir = ``
+    let contadorlinha = -1 
+    function linha() {
+        let qtdlinha = linhas.length+1
+
+
+        exibir = ``
+        let linhaNovo = ipt_linha.value
+        linhas.push(linhaNovo)
+        contadorlinha ++
+        //alert('Novo linha adicionado!')
+        console.log(linhas);
+        if ( linhas.length >= 0) {
+            console.log('total de linhas cadastrados', linhas.length);
+        }
+        for (let contador = 0; contador < linhas.length; contador ++){
+            exibir += `${linhas[linhas.length-1 - contador]}<br>`
+        }
+        div_exibir.innerHTML = exibir       
+    }
+
+     
+     function pesquisa(){
+        exibir += `<br>`
+        let pesquisa = ipt_pesquisa.value
+        let respostaPesquisa = []
+        for (let contador = 0; contador < linhas.length; contador ++){
+            if (pesquisa.toUpperCase() == linhas[contador].toUpperCase()){
+                respostaPesquisa.push(contador+1)
+            }
+        }
+        if (respostaPesquisa.length >= 0){
+            exibir += `Você ja pegou essa linha ${respostaPesquisa.length} vezes, nessa ordem :${respostaPesquisa}`
+        }
+        exibir += 
+        div_exibir.innerHTML = exibir
+     }
+</script>
+</html>

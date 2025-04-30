@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="ipt_filme" placeholder="Insira aqui seus filme favoritos!">
+  <button onclick="filme()">Cadastrar filme</button> 
+  <div id="div_exibir"></div>
+</body>
+<script>
+  let filmes = []
+  let contadorFilmes = -1
+  function filme(){
+    let filmeNovo = ipt_filme.value
+    filmes.push(filmeNovo)
+    alert('Novo filme adicionado!')
+    contadorFilmes ++
+    console.log(filmes); 
+    if(contadorFilmes >= 0){
+    console.log('total de filmes cadastrados', contadorFilmes);
+    
+    let exibir = ``
+    exibir = `Seu filme favorito: ${filmes[0]}<br>`
+    if(contadorFilmes >= 2){
+      exibir += `Seu 3º filme favortio: ${filmes[2]}<br>`
+    }else exibir += `Seu 3º filme favortio ainda não existe<br>`
+    exibir += `Total de filmes cadastrados ${contadorFilmes + 1}<br>`
+    div_exibir.innerHTML = exibir
+  }
+  }
+  
+  
+  
+  
+</script>
+</html>

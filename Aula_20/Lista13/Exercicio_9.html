@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_projeto" placeholder="Insira aqui seus projetos favoritos!">
+    <br>
+    <button onclick="projeto()">Cadastrar projeto</button>
+    <button onclick="mostrar()">Mostrar projetos</button>
+    <div id="div_exibir"></div>
+</body>
+<script>
+    let projetos = []  
+    let exibir = ``
+    let contadorprojeto = -1 
+    function projeto() {
+        let qtdProjeto = projetos.length+1
+
+
+        exibir = ``
+        let projetoNovo = ipt_projeto.value
+        projetos.push(projetoNovo)
+        contadorprojeto ++
+        alert('Novo projeto adicionado!')
+        console.log(projetos);
+        if ( projetos.length >= 0) {
+            console.log('total de projetos cadastrados', projetos.length);
+        }
+
+
+        if (qtdProjeto <= 4){
+            exibir += ` ${qtdProjeto} é a quantidade de projetos e Junior é seu nível de experiência`
+        }
+        else if (qtdProjeto <= 12){
+            exibir += ` ${qtdProjeto} é a quantidade de projetos e Pleno é seu nível de experiência`
+        }
+        else exibir += ` ${qtdProjeto} é a quantidade de projetos e Sênior é seu nível de experiência`
+        div_exibir.innerHTML = exibir
+    }
+    function mostrar(){
+        exibir +=`<br>`
+        for (let contador = 0; contador < projetos.length; contador ++){
+            exibir += `${projetos[projetos.length-1 - contador]}<br>`
+        }
+        div_exibir.innerHTML = exibir
+    }
+     
+</script>
+</html>

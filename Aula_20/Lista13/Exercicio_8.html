@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt_aluno" placeholder="Insira aqui seus alunos favoritos!">
+    <br>
+    <button onclick="aluno()">Cadastrar aluno</button>
+    <div id="div_exibir"></div>
+</body>
+<script>
+    let alunos = []  
+    let exibir = ``
+    let contadorAluno = -1 
+    function aluno() {
+        exibir = ``
+        let alunoNovo = ipt_aluno.value
+        alunos.push(alunoNovo)
+        contadorAluno ++
+        alert('Novo aluno adicionado!')
+        console.log(alunos);
+        if ( alunos.length >= 0) {
+            console.log('total de alunos cadastrados', alunos.length);
+        }
+        for (let contador = 0; contador < alunos.length; contador ++){
+            exibir += `${alunos[alunos.length-1 - contador]}<br>`
+        }
+        div_exibir.innerHTML = exibir 
+    }
+</script>
+
+</html>
