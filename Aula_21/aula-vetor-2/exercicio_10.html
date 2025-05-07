@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Digite as linhas que pegou na semana: </label>
+    <input type="text" id="ipt_nome_linha">
+    <button onclick="gravarBusao()">Gravar Busão</button>
+    <br>
+
+    <label>Digite uma linha para pesquisar: </label>
+    <input type="text" id="ipt_linha_pesquisar">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <br>
+
+    <div id="div_resultado"></div>
+</body>
+<script>
+    let linhas = []
+
+    function gravarBusao(){
+        let linhaDigitada = ipt_nome_linha.value
+        linhas.push(linhaDigitada)
+
+        let fraseFinal = ''
+        for(let i = linhas.length - 1; i >= 0 ; i -- ){
+            fraseFinal += `linha ${i+1}: ${linhas[i]}<br>`
+
+        }
+        div_resultado.innerHTML = fraseFinal;
+    }
+
+    function pesquisar(){
+        let linhaPesquisarDigitada = ipt_linha_pesquisar.value
+        let ordemLinhas = []
+
+        for(let i = 0; i < linhas.length; i++ ){
+            if(linhas[i] == linhaPesquisarDigitada){
+                ordemLinhas.push(i)
+            }
+        }
+
+        if(linhas.length > 0){
+            div_resultado.innerHTML += `Você já pegou essa linha ${ordemLinhas.length} vezes, nessa ordem ${ordemLinhas}`
+        }else div_resultado.innerHTML += `Você nunca pegou essa linha
+        
+        `
+    }
+</script>
+</html>

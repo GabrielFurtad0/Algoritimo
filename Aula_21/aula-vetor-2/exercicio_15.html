@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Nome do produto:</label>
+    <input type="text" id="ipt_nome_produto">
+    <br>
+
+    <label>Preço de compra:</label>
+    <input type="text" id="ipt_preco_compra">
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br>
+    <button onclick="relatorioEstoque()">Relatório de Estoque</button>
+
+    <div id="div_relatorio"></div>
+
+</body>
+
+<script>
+    let nomes = []
+    let precos = []
+
+    function cadastrar(){
+        let nomeDigitado = ipt_nome_produto.value
+        let precoDigitado = ipt_preco_compra.value
+
+        nomes.push(nomeDigitado);
+        precos.push(precoDigitado);
+    }
+
+    function relatorioEstoque(){
+        let fraseFinal = `Total de produtos: ${nomes.length}`
+        
+        for(let i = 0; i < nomes.length; i++){
+            let precoFinalItem = precos[i] * 1.25
+
+            fraseFinal += `Produto ${i}: ${nomes[i]}<br>
+            Preço de produto: ${precos[i]}. Vender por R$${precoFinalItem} <br>`
+        }
+        div_relatorio.innerHTML = fraseFinal
+    }
+
+
+</script>
+
+</html>

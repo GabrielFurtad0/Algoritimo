@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Insira o nome do produto: </label>
+    <input type="text" id="ipt_produto">
+    <br>
+    <label for="">Insira o código do produto: </label>
+    <input type="text" id="ipt_codigo">
+    <br>
+    <label for="">Insira a quantidade de produtos: </label>
+    <input type="text" id="ipt_qtd">
+    <br>
+    <button onclick="cadastrar()">Cadastrar produto</button>
+    <br>
+    <button onclick="repor()">Repor Estoque</button>
+    <br>
+    <button onclick="vender()">Vender produto</button>
+    <br>
+    <button onclick="exibirF()">Exibir relatório</button>
+
+    <div id="div_exibir"></div>
+</body>
+<script>
+    let nomes = []
+    let codigos = []
+    let estoque = []
+    let qtdVendida = []
+    let exibir = ''
+
+    function cadastrar(){
+        let nomeNovo = ipt_produto.value
+        let codigoNovo = ipt_codigo.value
+        let qtdNova = Number(ipt_qtd.value)
+        let codigoExistente = false
+        let nomeExistente = false
+        exibir = ''
+
+        for (let i = 0; i <= codigos.length ; i ++){
+                if (codigos[i] == codigoNovo){
+                    codigoExistente = true
+                }
+                if(nomes[i] == nomeNovo){
+                    nomeExistente = true
+                }
+            }
+
+            console.log('p: ', nomes, 'c:', codigos, 'e:', estoque);
+            
+        if (nomeNovo != '' && codigoNovo != '' && qtdNova != ''){   
+            if(codigoExistente == false && nomeExistente == false){
+                if(qtdNova > 10){
+                    nomes.push(nomeNovo);
+                    codigos.push(codigoNovo);
+                    estoque.push(qtdNova);
+                    qtdVendida.push(0)
+                    exibir += `Foi cadastrado o produto: ${nomeNovo} com o código: ${codigoNovo} com ${qtdNova} unidades no estoque`
+
+                }else alert('Quantidade deve ser maior que 10')
+
+            }else alert('Codigo ou nome ja existente')      
+
+        }else alert('Todos os campos tem que estar preenchidos')
+
+
+        div_exibir.innerHTML = exibir
+
+        console.log('p: ', nomes, 'c:', codigos, 'e:', estoque);
+    }
+
+    function repor(){
+        let codigoNovo = ipt_codigo.value
+        let qtdNova = Number(ipt_qtd.value)
+        let codigoExistente = false
+        let codigoAtual = ''
+        let posicaoIndex = 0
+        exibir = ''
+
+        for (let i = 0; i <= codigos.length; i ++){
+                if (codigos[i] == codigoNovo){
+                    codigoExistente = true
+                    codigoAtual = codigos[i]
+                    posicaoIndex = i
+                }
+            }
+            
+        if (codigoNovo != '' && qtdNova != ''){   
+            if(codigoExistente == true){
+                if(qtdNova > 10){
+                    estoque[posicaoIndex] += qtdNova
+                    exibir += `Foi adicionado ${qtdNova} unidades de ${nomes[posicaoIndex]} ao estoque!<br>`
+                    if(estoque[posicaoIndex] > 10){
+                        exibir += `Código: ${codigos[posicaoIndex]} | Produto: ${nomes[posicaoIndex]} | Quantidade em Estoque: ${estoque[posicaoIndex]} (OK!)`
+                    }else exibir += `Código: ${codigos[posicaoIndex]} | Produto: ${nomes[posicaoIndex]} | Quantidade em Estoque: ${estoque[posicaoIndex]} (Precisa repor!)<br>`
+
+                }else alert('Quantidade deve ser maior que 10')
+
+            }else alert('Código não existente')      
+
+        }else alert('O campo de código do produto e o da quantidade não podem estar vazios')
+
+
+        div_exibir.innerHTML = exibir
+
+        console.log('p: ', nomes, 'c:', codigos, 'e:', estoque);
+    }
+
+    function vender(){
+        let nomeNovo = ipt_produto.value
+        let codigoNovo = ipt_codigo.value
+        let qtdNova = Number(ipt_qtd.value)
+        let codigoExistente = false
+        let nomeExistente = false
+        let codigoAtual = ''
+        let posicaoIndex = 0
+        exibir = ''
+
+        for (let i = 0; i <= codigos.length; i ++){
+                if (codigos[i] == codigoNovo){
+                    codigoExistente = true
+                    codigoAtual = codigos[i]
+                    posicaoIndex = i
+                }
+                if(nomes[i] == nomeNovo){
+                    nomeExistente = true
+                }
+            }
+
+            if (nomeNovo != '' && codigoNovo != '' && qtdNova != ''){   
+            if(codigoExistente == true && nomeExistente == true){
+
+                if(qtdNova <= estoque[posicaoIndex]){
+                    estoque[posicaoIndex] -= qtdNova
+                    qtdVendida[posicaoIndex] += qtdNova
+                    exibir +=`${qtdNova}x do produto: ${nomes[posicaoIndex]} foi vendido com sucesso<br>`
+                }else exibir +=`Não há ${nomes[posicaoIndex]} para essa venda! <br>`
+
+                
+                if(estoque[posicaoIndex] > 10){
+                    exibir += `Código: ${codigos[posicaoIndex]} | Produto: ${nomes[posicaoIndex]} | Quantidade em Estoque: ${estoque[posicaoIndex]} (OK!)`
+                    }else exibir += `Código: ${codigos[posicaoIndex]} | Produto: ${nomes[posicaoIndex]} | Quantidade em Estoque: ${estoque[posicaoIndex]} (Precisa repor!)<br>`
+
+            }else alert('Codigo ou nome não existente(s)')      
+
+        }else alert('Todos os campos tem que estar preenchidos')
+
+        div_exibir.innerHTML = exibir
+
+        console.log('p: ', nomes, 'c:', codigos, 'e:', estoque);
+    }
+
+    function exibirF(){
+        exibir = ''
+        let produtoMaiorQtd = 0
+            let produtoMenorQtd = 0
+            let produtoMenosVdd = 0
+            let produtoMaisVdd = 0
+
+        for(let i = 0;  i < codigos.length; i ++){
+            
+
+            if(estoque[i] > estoque[produtoMaiorQtd]){
+                produtoMaiorQtd = [i]
+            }if(estoque[i] < estoque[produtoMenorQtd]){
+                produtoMenorQtd = [i]
+            }if(qtdVendida != ''){
+                if(qtdVendida[i] < qtdVendida[produtoMenosVdd])
+                produtoMenosVdd = [i]
+            }if(qtdVendida != ''){
+                if(qtdVendida[i] > qtdVendida[produtoMaisVdd])
+                produtoMaisVdd = [i]
+            }
+
+            if(estoque[i] > 10){
+                exibir += `Registro ${i+1} - Código: ${codigos[i]} | Produto: ${nomes[i]} | Quantidade em Estoque: ${estoque[i]} (OK!) <br>`
+            }else exibir += `Registro ${i+1} - Código: ${codigos[i]} | Produto: ${nomes[i]} | Quantidade em Estoque: ${estoque[i]} (Precisa repor!) <br>`
+            
+   
+        }
+        exibir += `Seu estoque tem ${codigos.length} produtos registrados <br>`
+        if (    produtoMaiorQtd != 0 &&
+                produtoMenorQtd != 0 &&
+                produtoMenosVdd != 0 &&
+                produtoMaisVdd  != 0){
+                    exibir +=`Produto com maior quantidade em estoque:${nomes[produtoMaiorQtd]}<br>
+                    Produto com menor quantidade em estoque: ${nomes[produtoMenorQtd]}<br>
+                    Produto mais vendido: ${nomes[produtoMaisVdd]}<br>
+                    Produto menos vendido: ${nomes[produtoMenosVdd]}<br>  `
+                    }
+        div_exibir.innerHTML = exibir
+
+        console.log('p: ', nomes, 'c:', codigos, 'e:', estoque, 'v:', qtdVendida);
+    }
+</script>
+</html>
