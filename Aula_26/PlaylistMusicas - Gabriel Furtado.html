@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="insira o nome da musica aqui" id="ipt_titulo">
+    <input type="text" placeholder="insira o nome da banda aqui" id="ipt_banda">
+    <input type="text" placeholder="insira a duracao da musica aqui" id="ipt_duracao">
+    <input type="text" placeholder="insira o ano de lançaamento da musica aqui" id="ipt_anoLancamento">
+    <input type="text" placeholder="insira a nota da musica aqui" id="ipt_avaliacoes">
+    <input type="text" placeholder="insira os integrantes aqui separados por virgula" id="ipt_integrantes">
+    <br>
+    <br>
+    <button onclick="adicionarMusica()">Adicionar musica</button>
+    <button onclick="listarMusicas()">Listar musicas</button>
+    <button onclick="removerMusica()">Remorver musica</button>
+    <button onclick="atualizarAnoLancamento()">Atualizar ano de lançamento da musica</button>
+    <button onclick="mediaAvaliacoes()">Exibir a média das avaliações</button>
+    <button onclick="buscarBandaPorIntegrante()">Exibir os integrantes da banda</button>
+    <div id="div_resposta"></div>
+</body>
+<script>
+
+let playlist = [{
+        'nome':  'nomeMusica',
+        'banda': 'nomeBanda',
+        'duracao': 'duracaoMusica',
+        'integrantes': ['Pedro', 'Felipe', 'Amaro', 'JSON'],
+        'anoDeLancamento': 'anoLancamento',
+        'notas': [9.1, 9.2, 10, 8]
+    }]
+
+console.log(playlist);
+
+
+function adicionarMusica(){
+    const nomeMusica = ipt_titulo.value;
+    const nomeBanda = ipt_banda.value;
+    const duracaoMusica = ipt_duracao.value;
+    const anoLancamento = ipt_anoLancamento.value;
+    const notaMusica = ipt_avaliacoes.value;
+    const nomesDigitados = ipt_integrantes.value;
+
+    const integrantes = nomesDigitados.split(",");
+
+    for (let i = 0; i < integrantes.length; i++) {
+    integrantes[i] = integrantes[i].trim();
+    }
+
+    const notasMusica = notaMusica.split(",");
+
+    for (let i = 0; i < notasMusica.length; i++) {
+        notasMusica[i] = notasMusica[i].trim();
+    }
+
+    if (nomeMusica == ''||
+        nomeBanda == '' ||
+        duracaoMusica == '' ||
+        anoLancamento == '' ||
+        notaMusica == '' ||
+        nomesDigitados == '' 
+    ){ alert ('Todos os campos devem estar preenchidos!')}
+    else {
+
+    
+    let musica = [{
+        nome:  nomeMusica,
+        banda: nomeBanda,
+        duracao: duracaoMusica,
+        integrantes: integrantes,
+        anoDeLancamento: anoLancamento,
+        notas: notasMusica
+    }]
+
+
+    playlist.push(musica)
+    console.log(playlist);
+    
+    }
+}
+
+function listarMusicas(){  
+
+        div_resposta.innerHTML = ''
+       for (let index = 0; index < playlist.length; index++) {
+        div_resposta.innerHTML += `
+        Titulo: ${playlist[index].nome}<br>
+        Banda: ${playlist[index].banda}<br>
+        Duração: ${playlist[index].duracao}<br>
+        Integrantes: ${playlist[index].integrantes}<br>
+        Ano de lançamento: ${playlist[index].anoDeLancamento}<br>
+        notas: ${playlist[index].notas.toString()}<br>
+        `
+        
+    }
+}
+
+ function removerMusica(){
+    const nomeMusica = ipt_titulo.value;
+
+    for (let index = 0; index < playlist.length; index++) {
+        if (playlist[index].nome == nomeMusica) {
+            playlist.splice([index], playlist.nome)
+        }
+        
+    }
+    console.log(playlist);
+    
+ }
+
+</script>
+</html>
